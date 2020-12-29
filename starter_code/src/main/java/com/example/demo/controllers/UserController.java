@@ -51,22 +51,22 @@ public class UserController {
 
 		if(createUserRequest.getPassword().length() < 8){
 			LOGGER.error("User not created because Password cannot be less than 8 characters");
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Password cannot be less than 8 characters");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password cannot be less than 8 characters");
 		}
 
 		if( !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
 			LOGGER.error("User not created because Passwords are not the same");
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Passwords are not the same");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Passwords are not the same");
 		}
 
 		if (createUserRequest.getUsername() == null || createUserRequest.getUsername().isEmpty()) {
 			LOGGER.info("Username {} cannot be null of empty", createUserRequest.getUsername());
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 
 		if( userRepository.findByUsername(createUserRequest.getUsername()).isPresent()){
 			LOGGER.error("Username {} already exists", createUserRequest.getUsername());
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 
 
