@@ -41,8 +41,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.parentAuthenticationManager(authenticationManagerBean())
+        auth
+//          parentAuthenticationManager(authenticationManagerBean()) causes stackoverflow
             .userDetailsService(userDetailsService)
             .passwordEncoder(bCryptPasswordEncoder);
+            super.configure(auth);
     }
 }
