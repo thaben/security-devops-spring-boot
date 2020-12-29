@@ -35,3 +35,8 @@ target/
 /**/.idea/*
 .idea
  ../../.idea/
+
+*.class
+target
+.classpath
+.settings
