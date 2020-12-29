@@ -87,7 +87,7 @@ public class UserControllerTest {
         createUserRequest.setUsername(USERNAME);
         createUserRequest.setPassword(PASSWORD);
         ResponseEntity<User> response = (ResponseEntity<User>) userController.createUser(createUserRequest);
-        Assert.assertEquals(HttpStatus.FORBIDDEN.value(),response.getStatusCode().value() );
+        Assert.assertEquals(HttpStatus.BAD_REQUEST.value(),response.getStatusCode().value() );
     }
 
     @Test
@@ -96,7 +96,7 @@ public class UserControllerTest {
         createUserRequest.setUsername(USERNAME);
         createUserRequest.setPassword("password");
         ResponseEntity<User> response = (ResponseEntity<User>) userController.createUser(createUserRequest);
-        Assert.assertEquals(response.getStatusCodeValue(), HttpStatus.FORBIDDEN.value());
+        Assert.assertEquals(HttpStatus.BAD_REQUEST.value(),response.getStatusCodeValue() );
     }
 
     private Optional<User> createUser() {
