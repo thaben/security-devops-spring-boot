@@ -66,7 +66,7 @@ public class UserController {
 
 		if( userRepository.findByUsername(createUserRequest.getUsername()).isPresent()){
 			LOGGER.error("Username {} already exists", createUserRequest.getUsername());
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already exists");
 		}
 
 
