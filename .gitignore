@@ -35,3 +35,5 @@ target/
 /**/.idea/*
 .idea
  ../../.idea/
+
+ *.class
